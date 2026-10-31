@@ -1,14 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import {
-  motion,
-  useInView,
-  animate,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useInView, animate, useReducedMotion } from "framer-motion";
 
 interface HeroProps {
   onPrimaryClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
@@ -88,27 +80,6 @@ function AnimatedTitle({ reduce }: { reduce: boolean }) {
 export function HeroSection({ onPrimaryClick }: HeroProps) {
   const reduce = !!useReducedMotion();
 
-  /* تتبّع الماوس: العنوان والخلفية بيتحركوا بعكس بعض (عمق) */
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 18, mass: 0.6 });
-  const sy = useSpring(my, { stiffness: 60, damping: 18, mass: 0.6 });
-  const titleX = useTransform(sx, (v) => v * 14);
-  const titleY = useTransform(sy, (v) => v * 8);
-  const bgX = useTransform(sx, (v) => v * -18);
-  const bgY = useTransform(sy, (v) => v * -10);
-
-  const onMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (reduce) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width - 0.5);
-    my.set((e.clientY - r.top) / r.height - 0.5);
-  };
-  const onLeave = () => {
-    mx.set(0);
-    my.set(0);
-  };
-
   const stats = [
     { value: <CountUp to={100} suffix="%" duration={1} />, label: "خدمة مجانية بالكامل" },
     { value: <CountUp to={24} suffix=" ساعة" duration={0.8} />, label: "متوسط وقت الاستجابة" },
@@ -154,16 +125,11 @@ export function HeroSection({ onPrimaryClick }: HeroProps) {
 
       {/* ================= 1. HERO ================= */}
       <section
-        onMouseMove={onMove}
-        onMouseLeave={onLeave}
         className="relative flex min-h-[640px] w-full flex-col overflow-hidden bg-neutral-900 md:min-h-[720px] lg:min-h-screen"
       >
         {/* الخلفية: صورة بزوم بطيء + عمق + تعتيم */}
         <div className="pointer-events-none absolute inset-0 z-0">
-          <motion.div
-            className="absolute -inset-6"
-            style={reduce ? undefined : { x: bgX, y: bgY }}
-          >
+          <div className="absolute inset-0 overflow-hidden">
             <motion.img
               src="/mm.jpg"
               alt="منصة حماية المستهلك"
@@ -172,7 +138,7 @@ export function HeroSection({ onPrimaryClick }: HeroProps) {
               animate={{ scale: 1.04 }}
               transition={{ duration: 3.2, ease: EASE }}
             />
-          </motion.div>
+          </div>
           <div className="absolute inset-0 bg-neutral-950/45" />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-neutral-950/35" />
           {/* فينيت خفيف بيركّز النظر على العنوان */}
@@ -183,10 +149,7 @@ export function HeroSection({ onPrimaryClick }: HeroProps) {
         <div className="relative z-10 flex flex-1 flex-col justify-between p-5 sm:p-8 md:p-30">
           <div className="flex flex-col gap-2">
             {/* العنوان */}
-            <motion.div
-              className="flex flex-col items-center"
-              style={reduce ? undefined : { x: titleX, y: titleY }}
-            >
+            <div className="flex flex-col items-center">
               <AnimatedTitle reduce={reduce} />
 
               {/* خط رفيع بيرسم نفسه تحت العنوان */}
@@ -206,7 +169,7 @@ export function HeroSection({ onPrimaryClick }: HeroProps) {
                   />
                 )}
               </div>
-            </motion.div>
+            </div>
 
             {/* الوصف + الأزرار */}
             <div className="mt-8 flex flex-col gap-4 md:mt-12 md:flex-row md:items-center md:justify-between">
