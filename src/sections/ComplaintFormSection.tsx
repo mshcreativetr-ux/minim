@@ -1,4 +1,3 @@
-import { FileCheck2 } from "lucide-react";
 import { ComplaintForm } from "@/components/site/ComplaintForm";
 
 export function ComplaintFormSection() {
@@ -9,11 +8,7 @@ export function ComplaintFormSection() {
     >
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-900">
-            <FileCheck2 className="h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
-            النموذج الموحد
-          </span>
-          <h2 className="mt-2 text-3xl font-extrabold md:text-4xl text-slate-950">
+          <h2 className="text-3xl font-extrabold md:text-4xl text-slate-950">
             قدّم شكواك التجارية الآن
           </h2>
           <p className="mt-3 text-base text-slate-700 leading-relaxed font-medium">
