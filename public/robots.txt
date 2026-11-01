@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # رابط خريطة الموقع الرسمية
-Sitemap:https://uaeadvocatehub.com/sitemap.xml
+Sitemap:https://uaeconshield.com/sitemap.xml

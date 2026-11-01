@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 // قم بتحديث رابط الموقع الجديد هنا
-const SITE_URL = "https://uaeadvocatehub.com/";
+const SITE_URL = "https://uaeconshield.com/";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 interface SeoProps {

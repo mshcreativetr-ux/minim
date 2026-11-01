@@ -93,12 +93,12 @@ export function Footer() {
             </li>
             <li className="pt-2">
               <a 
-                href="mailto:moetshakawi-uae@gmail.com" 
+                href="mailto:uaeconshield@gmail.com" 
                 className="inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white transition-all hover:border-blue-500 hover:bg-white/10 group" 
                 dir="ltr"
               >
                 <Mail className="h-4 w-4 shrink-0 text-blue-400 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                <span className="font-semibold">moetshakawi-uae@gmail.com</span>
+                <span className="font-semibold">uaeconshield@gmail.com</span>
                 <ArrowUpRight className="h-3.5 w-3.5 text-neutral-400" />
               </a>
             </li>
